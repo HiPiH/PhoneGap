@@ -1,0 +1,24 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Page.cshtml"; ;
+}
+@section Title
+{
+    asdasdasd
+}
+<div style="text-align:center">
+    <input name="" id="name" placeholder="Имя..." value="" type="text">
+    <p>Введите ваше имя..</p>
+    <input name="" id="code" placeholder="Код" value="" type="text">
+    <p>Введите проверочный код из SMS</p>
+    <a data-role="button" id="sendSms">
+        Отправить код повторно
+    </a>
+    <p>Пожалуйста пододжите 5 минут, прежде чем пробовать ещё раз.</p>
+    <ul id="error_list"></ul>
+    <a data-role="button" id="endregistration" href="#page?endregister">
+        Завершить регистрацию
+    </a>
+</div>

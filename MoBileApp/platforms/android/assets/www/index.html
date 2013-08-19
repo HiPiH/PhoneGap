@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Hello World</title>
+		<script type="text/javascript" src="phonegap.js"></script>	
+		<script src="http://172.16.0.201:8080/target/target-script-min.js#anonymous"></script>
+		<script src="js/require.js"></script>
+		<script>
+			require.config({
+				baseUrl: 'js',
+				paths: {
+					app: 'http://172.16.0.201:49900/Content/App',
+					tpl: 'http://172.16.0.201:49900/Content/Template'
+				}, 
+				map: {
+					'*': {}
+				},
+				urlArgs: "bust=" +  (new Date()).getTime(),
+				shim: {
+					
+					'backbone': { 
+						deps: ['underscore', 'jquery'],
+						exports: 'Backbone'
+					},
+					'underscore': {
+						exports: '_'
+					}
+				},
+				 config: { 
+					text: {
+						useXhr: function (url, protocol, hostname, port) {
+							return true;
+						}
+					}
+				}
+			});
+			function startApplication()
+			{
+					require(['jquery', 'backbone', 'app/app'], function ($, Backbone, Router) {
+						var router = new Router();
+						 $("body").on("click", ".back-button", function (event) {
+							event.preventDefault();
+							window.history.back();
+						});
+						Backbone.history.start();
+					});
+			}
+			
+			if(document.URL.indexOf("http://") != -1 || document.URL.indexOf("#debug") != -1) 
+			{
+				startApplication();
+			}else{
+				document.addEventListener('deviceready',
+				function(){
+					showAlert()
+					startApplication();
+					
+				}, false);
+			}
+				
+			
+			function alertDismissed() {
+				// do something
+			}
+				
+				
+			function showAlert() {
+				navigator.notification.alert(
+					'You are the winner!',  // message
+					alertDismissed,         // callback
+					'Game Over',            // title
+					'Done'                  // buttonName
+				);
+			}
+		</script>
+			
+		
+		
+		
+        
+		
+    </head>
+    <body >
+       <div data-role="content">
+		</div>
+		
+		
+		
+    </body>
+</html>
+

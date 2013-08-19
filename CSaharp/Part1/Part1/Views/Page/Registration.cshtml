@@ -1,0 +1,35 @@
+﻿@model dynamic
+@{
+
+    Layout = "~/Views/Page.cshtml";
+}
+@section Title
+{
+    <h1>asdasdasd</h1>
+}
+<div style="text-align:center">
+    <p class="ui-body-d" style="padding:2em;">
+        Введите свой номер телефона для регистрации в App:
+    </p>
+        <input type="text" name="phone" pattern="\+7\([0-9]{3}\)[0-9]{3}-[0-9]{4}" id="phone" value="" placeholder="+7(___)___-____" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" />
+        <p>Для проверкм номера и завершения регистрации Вам будет отправлено SMS с проверочным кодом</p>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+
+                        <input type="checkbox" key="r" name="police" id="police" class="custom" />
+                        <label for="police">Я примаю условия</label>
+
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="ui-block-b"><p><a href="#page?police" data-transition="fade"> пользовательского соглашения</a></p></div>
+        </fieldset>
+        <ul id="error_list"></ul>
+        <a data-role="button" id="to_step2" href="#page?reg2">
+            Отправить
+        </a>
+
+</div>
